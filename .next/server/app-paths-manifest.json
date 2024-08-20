@@ -1,0 +1,6 @@
+{
+  "/page": "app/page.js",
+  "/flashcard-generator/page": "app/flashcard-generator/page.js",
+  "/savedFlashcards/page": "app/savedFlashcards/page.js",
+  "/api/gen-flash/route": "app/api/gen-flash/route.js"
+}
