@@ -1,6 +1,6 @@
 {
   "/page": "app/page.js",
   "/flashcard-generator/page": "app/flashcard-generator/page.js",
-  "/savedFlashcards/page": "app/savedFlashcards/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
   "/api/gen-flash/route": "app/api/gen-flash/route.js"
 }

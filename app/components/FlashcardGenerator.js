@@ -187,17 +187,23 @@ const FlashcardGenerator = () => {
     const d = await response.json();
     console.log(d)
     
-    const str = d.substring(d.indexOf("["),d.indexOf("]")+1);
-    // console.log(str)
+    const str = d?.substring(d.indexOf("["),d.indexOf("]")+1);
     const res = await JSON.parse(str);
-    setFlashcards(res);
+    console.log("res =>",res)
+    setTimeout(() => {
+      if(res)
+      {
+        setFlashcards(res);
+      }
+      
+    }, 2000);
     // console.log(typeof(d.a),"Response by browser")
   }
 
 
 
     catch(e){
-      console.log(e);
+      console.log("abcd",e);
     }
     setFlippedIndex(null);
   };
@@ -216,8 +222,8 @@ const FlashcardGenerator = () => {
       const collRef  = collection(db,"flashcards");
 try{
 
-  flashcards.map(async (f)=>{
-    
+  flashcards?.map(async (f)=>{
+    console.log("1234",f)
    let res=  await addDoc(collRef,{
       topic:setName,
       question: f.question,
@@ -286,7 +292,7 @@ finally{
           <Button variant="contained" color="primary" onClick={handleGenerate}>
             Generate
           </Button>
-          {flashcards.length > 0 && (
+          {flashcards?.length > 0 && (
             <Button
               variant="contained"
               color="primary"
@@ -297,13 +303,13 @@ finally{
           )}
         </ButtonContainer>
 
-        {flashcards.length > 0 && (
+        {flashcards?.length > 0 && (
           <FlashcardGrid>
-            {flashcards.map((flashcard, index) => (
+            {flashcards?.map((flashcard, index) => (
               <FlashcardWrapper key={index} onClick={() => handleFlip(index)}>
                 <FlashcardInner flipped={flippedIndex === index}>
-                  <FlashcardFront>{flashcard.question}</FlashcardFront>
-                  <FlashcardBack>{flashcard.answer}</FlashcardBack>
+                  <FlashcardFront>{flashcard?.question}</FlashcardFront>
+                  <FlashcardBack>{flashcard?.answer}</FlashcardBack>
                 </FlashcardInner>
               </FlashcardWrapper>
             ))}
